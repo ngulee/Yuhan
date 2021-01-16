@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { IconLayoutGrid } from '@tabler/icons';
 import MenuItemDetail from './components/MenuItemDetailCard';
 import { 
   getFormattedMenu,
@@ -12,7 +13,6 @@ const HeaderNavWrapper = styled.div`
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: red;
 `;
 
 const HeaderNavItem = styled.div`
@@ -47,6 +47,9 @@ const Home = () => {
   return (
     <React.Fragment>
       <HeaderNavWrapper>
+        <HeaderNavItem>
+          <IconLayoutGrid />
+        </HeaderNavItem>
         {
           headerNavs.map((headerNav, index) => {
             const { taxonomyName, children } = headerNav;

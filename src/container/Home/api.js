@@ -1,5 +1,5 @@
-import menuData from '../../yuhan/menuData.json';
-import threePics from '../../yuhan/three_pic.json';
+import menuData from '../../mock/menuData.json';
+import threePics from '../../mock/three_pic.json';
 
 export const fetchHeaderNavs = () => {
   return new Promise((resolve) => {
