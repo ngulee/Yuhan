@@ -24,9 +24,10 @@ const HeaderMenuItem = styled.div`
   &:nth-child(n+3):hover > span {
     border-bottom: 1px solid #000000;
   }
+  &:nth-child(2) {
+    cursor: pointer;
+  }
 `;
-
-
 
 
 const Home = () => {
