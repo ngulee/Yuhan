@@ -49,7 +49,6 @@ const Home = () => {
 
 
   const handleMouseEnter = async ({ parentTaxonomyPath, taxonomyName }, event) => {
-    console.log('handleMouseEnter:')
     if (timer) clearTimeout(timer);
     event.stopPropagation();
     setActiveMenu(taxonomyName);
@@ -59,7 +58,6 @@ const Home = () => {
   }
 
   const handleMouseLeave = () => {
-    console.log('handleMouseLeave:')
     timer = setTimeout(() => {
       setActiveMenu('')
     }, 200);

@@ -28,26 +28,35 @@ const ProductImg = styled.img`
 `;
 const ProductDiscription = styled.p`
   margin: 0;
-  max-width: 200px;
+  max-width: 300px;
 `;
 const ProductPriceWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
   margin-top: 10px;
 `;
 const ProductPrice = styled.span`
   display: inline-block;
+  margin-right: 10px;
   font-size: 18px;
   font-weight: 600;
 `;
 
 const ProductCountTip = styled.span`
+  white-space: nowrap;
+  margin-bottom: 1px;
+  font-size: 14px;
+  font-weight: 600;
 `;
+
+const AVAILABLE_TIP_DOWN_LIMIT = 100;
 
 const Index = () => {
   const context = useContext(productsContext);
   const { products = [] } = context;
 
   const handleClickProduct = (product) => {
-    
+    console.log('product:', product)
   }
 
   return (
@@ -57,9 +66,12 @@ const Index = () => {
           const {
             id,
             price,
+            inventory,
             thumbnailUrl,
             shortDescription
           } = product;
+
+          const { TotalQuantity = 0 } = inventory?.availabilityUsShipping?.data?.[0] || {};
 
           return (
             <ProductItem 
@@ -72,6 +84,9 @@ const Index = () => {
                 <ProductDiscription>{shortDescription}</ProductDiscription>
                 <ProductPriceWrapper>
                   <ProductPrice>${price}</ProductPrice>
+                  {
+                    parseInt(TotalQuantity) < AVAILABLE_TIP_DOWN_LIMIT ? <ProductCountTip>Only {TotalQuantity} Available</ProductCountTip> : null
+                  }
                 </ProductPriceWrapper>
               </ProductRightSection>
             </ProductItem>
