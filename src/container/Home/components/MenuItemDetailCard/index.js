@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { IconChevronRight } from '@tabler/icons';
 import { filtersSubmenu, childrenDivideIntoGroups } from '../../utils';
@@ -82,13 +82,16 @@ const Index = ({
   menuIndex = 0,
   onMouseLeave = () => {}
 }) => {
-  let timer;
+
   submenu = filtersSubmenu(submenu);
-  const [wrapperHeight, setWrapperHeight] = useState(-1);
+
   const [activeItem, setActiveItem] = useState(
     submenu[0] ||
     { taxonomyName: '', children: [] }
   );
+  const [wrapperHeight, setWrapperHeight] = useState(-1);
+
+  const submenuWrapper = useRef();
 
   const handleSubmenuItemMouseEnter = (submenItem) => {
     if (submenItem.taxonomyName === activeItem.taxonomyName) return;
@@ -107,14 +110,11 @@ const Index = ({
   useEffect(() => {
     if (submenu.length <= 0) return;
 
-    if (timer) clearTimeout(timer);
+    const clientheight = submenuWrapper.current?.clientHeight;
 
-    timer = setTimeout(() => {
-      const submeneWrapper = document.querySelector('.submenu-wrapper');
-      if (submeneWrapper?.clientHeight) {
-        setWrapperHeight(submeneWrapper.clientHeight);
-      }
-    }, 0);
+    if (clientheight && wrapperHeight !== clientheight) {
+      setWrapperHeight(clientheight);
+    }
     
   }, [submenu, activeItem]);
 
@@ -122,6 +122,7 @@ const Index = ({
     <SubmenuWrapper 
       className='submenu-wrapper'
       menuIndex={menuIndex}
+      ref={submenuWrapper}
       onMouseLeave={onMouseLeave}
     >
       <SubmenuLeftSection height={wrapperHeight}>

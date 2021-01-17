@@ -85,7 +85,7 @@ const Home = () => {
               const { taxonomyName, children } = headerNav;
               return (
                 <HeaderMenuItem
-                  key={taxonomyName + index}
+                  key={taxonomyName}
                 >
 
                   <span
