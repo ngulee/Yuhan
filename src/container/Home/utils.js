@@ -23,6 +23,10 @@ export const getMenuItemChildren = (sourceNavs, parentTaxonomyPath) => {
   return children.find((item) => item.parentTaxonomyPath === parentTaxonomyPath);
 }
 
+export const filtersSubmenu = (submen = []) => {
+  return submen.filter(item => item.children.length > 0);
+}
+
 export const childrenDivideIntoGroups = (children, groupCount = 10) => {
   const result = [];
 

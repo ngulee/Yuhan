@@ -1,35 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import styled from 'styled-components';
 import { IconLayoutGrid } from '@tabler/icons';
 import MenuItemDetail from './components/MenuItemDetailCard';
 import { 
   getFormattedMenu,
 } from './utils';
-import { fetchHeaderNavs } from './api';
+import { fetchHeaderNavs, fetchTreePics } from './api';
+import { productsContext } from './context';
 
 
-const HeaderNavWrapper = styled.div`
+const HeaderMenuWrapper = styled.div`
   position: relative;
   display: flex;
   align-items: center;
   height: 60px;
 `;
 
-const HeaderNavItem = styled.div`
+const HeaderMenuItem = styled.div`
+  position: relative;
   display: inline-block;
   padding: 10px;
   cursor: default;
+  &:nth-child(n+3):hover > span {
+    border-bottom: 1px solid #000000;
+  }
 `;
+
+
+
 
 const Home = () => {
   const [headerNavs, setHeaderNavs] = useState([]);
 
   const [activeMenu, setActiveMenu] = useState('');
 
+  const [products, setProducts] = useState([])
 
-  const handleMouseEnter = ({ parentTaxonomyPath, taxonomyName }, event) => {
+
+  const handleMouseEnter = async ({ parentTaxonomyPath, taxonomyName }, event) => {
     event.stopPropagation();
     setActiveMenu(taxonomyName);
+    const threePics = await fetchTreePics(parentTaxonomyPath);
+
+    setProducts([...threePics]);
   }
 
   const handleMouseLeave = () => {
@@ -46,30 +59,38 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      <HeaderNavWrapper>
-        <HeaderNavItem>
+      <HeaderMenuWrapper>
+        <HeaderMenuItem>
           <IconLayoutGrid />
-        </HeaderNavItem>
+        </HeaderMenuItem>
         {
           headerNavs.map((headerNav, index) => {
             const { taxonomyName, children } = headerNav;
             return (
-              <HeaderNavItem
+              <HeaderMenuItem
                 key={taxonomyName + index}
               >
+
                 <span
                   onMouseEnter={(e) => handleMouseEnter(headerNav, e)}
                 >{taxonomyName}</span>
                 {
                   index > 0 && activeMenu === taxonomyName ?
-                    < MenuItemDetail submenu={children} onMouseLeave={handleMouseLeave} /> : null
+                    <productsContext.Provider value={{ products }}>
+                      < MenuItemDetail
+                        menuIndex={index}
+                        submenu={children}
+                        onMouseLeave={handleMouseLeave}
+                      />
+                    </productsContext.Provider>
+                     : null
                 }
 
-              </HeaderNavItem>
+              </HeaderMenuItem>
             )
           })
         }
-      </HeaderNavWrapper>
+      </HeaderMenuWrapper>
     </React.Fragment>
   )
 }

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { productsContext } from '../../context';
 
 const ProductsWrapper = styled.div`
   margin-left: 20px;
+  cursor: pointer;
 `;
 
 const ProductItem = styled.div`
@@ -40,22 +42,31 @@ const ProductPrice = styled.span`
 const ProductCountTip = styled.span`
 `;
 
+const Index = () => {
+  const context = useContext(productsContext);
+  const { products = [] } = context;
 
-const Index = ({
-  pics = []
-}) => {
+  const handleClickProduct = (product) => {
+    
+  }
+
   return (
     <ProductsWrapper>
       {
-        pics.map((
-          { 
-            id, 
-            price, 
-            thumbnailUrl, 
+        products.map((product, index) => {
+          const {
+            id,
+            price,
+            thumbnailUrl,
             shortDescription
-          }, index) => {
+          } = product;
+
           return (
-            <ProductItem key={id} index={index}>
+            <ProductItem 
+              key={id} 
+              index={index}
+              onClick={() => handleClickProduct(product)}
+            >
               <ProductImg src={thumbnailUrl} />
               <ProductRightSection>
                 <ProductDiscription>{shortDescription}</ProductDiscription>

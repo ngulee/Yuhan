@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { IconChevronRight } from '@tabler/icons';
-import { fetchTreePics } from '../../api';
-import { childrenDivideIntoGroups } from '../../utils';
+import { filtersSubmenu, childrenDivideIntoGroups } from '../../utils';
 import Products from '../Products';
 
+const HEADER_MENU_INDEX = 8;
 
 const SubmenuWrapper = styled.div`
   position: absolute;
   top:60px;
+  ${ ({ menuIndex }) => menuIndex > HEADER_MENU_INDEX ? 'right:0;' : '' }
   display:flex;
   min-height: 381px;
   border-radius: 8px;
@@ -69,23 +70,39 @@ const LastMenuItem = styled.span`
   margin: 10px 0;
   width: 200px;
   color: #ccc;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline #ccc;
+  }
 `;
 
 
 const Index = ({
   submenu = [],
+  menuIndex = 0,
   onMouseLeave = () => {}
 }) => {
   let timer;
-
-  const [pics, setPics] = useState([]);
+  submenu = filtersSubmenu(submenu);
   const [wrapperHeight, setWrapperHeight] = useState(-1);
-  const [activeItem, setActiveItem] = useState({ taxonomyName: '', children: [] });
+  const [activeItem, setActiveItem] = useState(
+    submenu[0] ||
+    { taxonomyName: '', children: [] }
+  );
 
-  const handleLastItemMouseEnter = async (taxonomyName) => {
-    const threePics = await fetchTreePics(taxonomyName);
-    setPics(threePics);
+  const handleSubmenuItemMouseEnter = (submenItem) => {
+    if (submenItem.taxonomyName === activeItem.taxonomyName) return;
+    setActiveItem(submenItem);
   }
+
+  /**
+   * 三季菜单点击事件
+   * @param {Object} column 点击菜单信息
+   */
+  const handleClickLastMenuItem = (column) => {
+    console.log('taxonomyName:', column.taxonomyName);
+  }
+
 
   useEffect(() => {
     if (submenu.length <= 0) return;
@@ -94,34 +111,35 @@ const Index = ({
 
     timer = setTimeout(() => {
       const submeneWrapper = document.querySelector('.submenu-wrapper');
-      console.log('submeneWrapper:', submeneWrapper?.clientHeight)
       if (submeneWrapper?.clientHeight) {
         setWrapperHeight(submeneWrapper.clientHeight);
       }
     }, 0);
     
-  }, [submenu, activeItem])
-  console.log('submenu:', wrapperHeight)
+  }, [submenu, activeItem]);
+
   return (
-    <SubmenuWrapper className='submenu-wrapper' onMouseLeave={onMouseLeave}>
+    <SubmenuWrapper 
+      className='submenu-wrapper'
+      menuIndex={menuIndex}
+      onMouseLeave={onMouseLeave}
+    >
       <SubmenuLeftSection height={wrapperHeight}>
         {
           submenu.map((submenItem) => {
             const { taxonomyName, children } = submenItem;
             return (
-              children.length > 0 ? (
-                <SubenItem
-                  isActived={taxonomyName === activeItem.taxonomyName}
-                  onMouseEnter={() => setActiveItem(submenItem)}
-                >
-                  <span>{taxonomyName}</span>
-                  <div style={{
-                    flexShrink: 0
-                  }}>
-                    <IconChevronRight size={24} />
-                  </div>
-                </SubenItem>
-              ): null
+              <SubenItem
+                isActived={taxonomyName === activeItem.taxonomyName}
+                onMouseEnter={() => handleSubmenuItemMouseEnter(submenItem)}
+              >
+                <span>{taxonomyName}</span>
+                <div style={{
+                  flexShrink: 0
+                }}>
+                  <IconChevronRight size={24} />
+                </div>
+              </SubenItem>
             )
           })
         }
@@ -139,11 +157,12 @@ const Index = ({
                     return (
                       <LastMenuColumns key={index} index={index}>
                         {
-                          columns.map(({ taxonomyName }) => {
+                          columns.map((column) => {
+                            const { taxonomyName } = column;
                             return (
                               <LastMenuItem 
                                 key={taxonomyName}
-                                onMouseEnter={() => handleLastItemMouseEnter(taxonomyName)}
+                                onClick={() => handleClickLastMenuItem(column)}
                               >{taxonomyName}</LastMenuItem>
                             )
                           })
@@ -153,13 +172,9 @@ const Index = ({
                   })
                 }
               </ContentLeft>
-              {
-                pics.length > 0 ? (
-                  <ContenRight>
-                    <Products pics={pics} />
-                  </ContenRight>
-                ) : null
-              }
+              <ContenRight>
+                <Products />
+              </ContenRight>
             </RightSectionContent>
           </SubmenuRightSection>
         ) : null
