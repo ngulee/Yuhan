@@ -8,7 +8,7 @@ const HEADER_MENU_INDEX = 8;
 
 const SubmenuWrapper = styled.div`
   position: absolute;
-  top:60px;
+  top:99%;
   ${ ({ menuIndex }) => menuIndex > HEADER_MENU_INDEX ? 'right:0;' : '' }
   display:flex;
   min-height: 381px;
