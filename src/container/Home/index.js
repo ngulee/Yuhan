@@ -6,7 +6,7 @@ import AllCategories from './components/AllCategories';
 import { 
   getFormattedMenu,
 } from './utils';
-import { fetchHeaderNavs, fetchTreePics } from './api';
+import { fetchHeaderNavs, fetchTreePics, fetchFourPics } from './api';
 import { productsContext } from './context';
 
 
@@ -47,6 +47,7 @@ const Home = () => {
   const [activeMenu, setActiveMenu] = useState('');
 
   const [products, setProducts] = useState([]);
+  const [fourProducts, setFourProducts] = useState([]);
 
   const [allCategoriesVisible, setAllCategoriesVisible] = useState(false);
 
@@ -70,9 +71,13 @@ const Home = () => {
     setActiveMenu('')
   }
 
-  const handleClickAllCatefories = () => {
-    console.log('all')
-    setAllCategoriesVisible(true);
+  const handleClickAllCatefories = async (isShow) => {
+    if (isShow) {
+      const fourPics = await fetchFourPics();
+      setFourProducts(fourPics);
+    }
+    
+    setAllCategoriesVisible(isShow);
   }
 
   useEffect(() => {
@@ -100,7 +105,7 @@ const Home = () => {
 
               if(index === 0) {
                 Object.assign(params, {
-                  onClick: handleClickAllCatefories
+                  onClick: () => handleClickAllCatefories(true)
                 })
               }
               
@@ -115,7 +120,7 @@ const Home = () => {
                   >{taxonomyName}</span>
                   {
                     index > 0 && activeMenu === taxonomyName ?
-                      <productsContext.Provider value={{ products }}>
+                      <productsContext.Provider value={{ products, name: 'a' }}>
                         < MenuItemDetail
                           menuIndex={index}
                           submenu={children}
@@ -131,7 +136,14 @@ const Home = () => {
         </HeaderMenuInnerWrapper>
       </HeaderMenuWrapper>
       {
-        allCategoriesVisible ? <AllCategories /> : null
+        allCategoriesVisible ? (
+          <productsContext.Provider value={{ products: fourProducts, name: 'b' }}>
+            <AllCategories 
+              headerMenu={headerNavs.slice(1)}
+              onClose={() => handleClickAllCatefories(false)}
+            />
+          </productsContext.Provider>
+        ) : null
       }
     </React.Fragment>
   )
