@@ -1,7 +1,8 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { IconLayoutGrid } from '@tabler/icons';
 import MenuItemDetail from './components/MenuItemDetailCard';
+import AllCategories from './components/AllCategories';
 import { 
   getFormattedMenu,
 } from './utils';
@@ -45,7 +46,9 @@ const Home = () => {
 
   const [activeMenu, setActiveMenu] = useState('');
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+
+  const [allCategoriesVisible, setAllCategoriesVisible] = useState(false);
 
 
   const handleMouseEnter = async ({ parentTaxonomyPath, taxonomyName }, event) => {
@@ -67,10 +70,20 @@ const Home = () => {
     setActiveMenu('')
   }
 
-  useEffect(async () => {
-    const sourceMenuData = await fetchHeaderNavs();
-    const menuData = getFormattedMenu([sourceMenuData]);
-    setHeaderNavs(menuData);
+  const handleClickAllCatefories = () => {
+    console.log('all')
+    setAllCategoriesVisible(true);
+  }
+
+  useEffect(() => {
+    async function fetchData () {
+      const sourceMenuData = await fetchHeaderNavs();
+      const menuData = getFormattedMenu([sourceMenuData]);
+      setHeaderNavs(menuData);
+    }
+
+    fetchData();
+    
   }, []);
 
   return (
@@ -82,10 +95,19 @@ const Home = () => {
         <HeaderMenuInnerWrapper onMouseLeave={handleMenuItemMouseLeave}>
           {
             headerNavs.map((headerNav, index) => {
+              const params = {};
               const { taxonomyName, children } = headerNav;
+
+              if(index === 0) {
+                Object.assign(params, {
+                  onClick: handleClickAllCatefories
+                })
+              }
+              
               return (
                 <HeaderMenuItem
                   key={taxonomyName}
+                  { ...params }
                 >
 
                   <span
@@ -102,13 +124,15 @@ const Home = () => {
                       </productsContext.Provider>
                       : null
                   }
-
                 </HeaderMenuItem>
               )
             })
           }
         </HeaderMenuInnerWrapper>
       </HeaderMenuWrapper>
+      {
+        allCategoriesVisible ? <AllCategories /> : null
+      }
     </React.Fragment>
   )
 }
