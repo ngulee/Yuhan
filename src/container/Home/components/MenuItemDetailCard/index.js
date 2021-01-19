@@ -108,11 +108,11 @@ const Index = ({
 
 
   useEffect(() => {
-    if (submenu.length <= 0) return;
+    if (submenu.length <= 0 || !activeItem.taxonomyName) return;
 
     const clientheight = submenuWrapper.current?.clientHeight;
 
-    if (clientheight && wrapperHeight !== clientheight) {
+    if (clientheight) {
       setWrapperHeight(clientheight);
     }
     

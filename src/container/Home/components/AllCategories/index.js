@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IconChevronRight, IconPlus, IconMinus, IconX } from '@tabler/icons';
 import Products from '../Products';
+import FavorateProducts from '../FavorateProducts/FavorateProducts';
 
 
 const CategoriesOuter = styled.div`
@@ -19,7 +20,7 @@ const CategoriesInner = styled.div`
   padding: 0 10px 10px 10px;
   display: flex;
   min-width: 684px;
-  height: 1059px;
+  height: 100vh;
   filter: drop-shadow(0px 2px 14.5px rgba(57,57,57,0.2));
   background-color: #ffffff;
 `;
@@ -163,8 +164,8 @@ const Index = ({ headerMenu = [], onClose = () => {} }) => {
                         <SubmenuItem isExpanded={menu.isExpanded}>{menu.taxonomyName}</SubmenuItem>
                           {
                           menu.isExpanded ?
-                            <IconMinus onClick={() => handleToggleSubmenItem(subIndex, false)} /> :
-                              <IconPlus onClick={() => handleToggleSubmenItem(subIndex, true) } />
+                            <IconMinus size={24} onClick={() => handleToggleSubmenItem(subIndex, false)} /> :
+                            <IconPlus size={24} onClick={() => handleToggleSubmenItem(subIndex, true) } />
                           }
                       </SubmenuItemInner>
                       {
@@ -190,7 +191,8 @@ const Index = ({ headerMenu = [], onClose = () => {} }) => {
               <SectionTitle>Trending Now</SectionTitle> : 
               <ProductsTitle>Trending at {activeMenuItem.taxonomyName}</ProductsTitle>
           }
-          <Products products />
+          <Products />
+          <FavorateProducts activeMenuItem={activeMenuItem}  />
         </ContentRightSection>
       </CategoriesInner>
     </CategoriesOuter>

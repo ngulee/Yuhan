@@ -1,6 +1,7 @@
 import menuData from '../../mock/menuData.json';
 import threePics from '../../mock/three_pic.json';
 import fourPics from '../../mock/four_pic.json';
+import onePics from '../../mock/one_pic.json';
 
 
 export const fetchHeaderNavs = () => {
@@ -23,6 +24,14 @@ export const fetchFourPics = () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(fourPics)
+    }, 100);
+  });
+}
+
+export const fetchOnePics = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(onePics)
     }, 100);
   });
 }
