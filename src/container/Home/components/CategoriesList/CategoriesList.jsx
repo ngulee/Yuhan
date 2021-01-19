@@ -1,115 +1,29 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { IconChevronRight, IconPlus, IconMinus, IconX } from '@tabler/icons';
-import Products from '../Products';
+import Products from '../Products/Products';
 import FavorateProducts from '../FavorateProducts/FavorateProducts';
 
-
-const CategoriesOuter = styled.div`
-  position: fixed;
-  top: 0;
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  filter: drop-shadow(0px 2px 14.5px rgba(57,57,57,0.2));
-  background-color: rgba(0, 0, 0, 0.2);
-`;
-
-const CategoriesInner = styled.div`
-  box-sizing: border-box;
-  padding: 0 10px 10px 10px;
-  display: flex;
-  min-width: 684px;
-  height: 100vh;
-  filter: drop-shadow(0px 2px 14.5px rgba(57,57,57,0.2));
-  background-color: #ffffff;
-`;
-
-
-const MainMenuItemsWrapper = styled.div`
-  box-sizing: border-box;
-  border-right: 2px solid #cccccc;
-  margin-right: 2px;
-`;
-const MainMenuItem = styled.div`
-  padding-left:10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 5px;
-  background: transparent;
-  background: ${({ isActived }) => (isActived ? '#cccccc' : 'transparent')};
-  text-decoration: ${({ isActived }) => (isActived ? 'underline' : 'none')};
-`;
-
-const SectionTitle = styled.div`
-  display: flex;
-  align-items: flex-end;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  height: 70px;
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-const ProductsTitle = styled.div`
-  display: flex;
-  align-items: flex-end;
-  box-sizing: border-box;
-  height: 70px;
-  margin-left: 20px;
-  margin-bottom: 10px;
-`;
-
-const ContentLeftSection = styled.div`
-  position: relative;
-  box-sizing: border-box;
-  width: 250px;
-  border-right: 1px solid #cccccc;
-`;
-
-const CloseAllCateGoriesIconWrapper = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-`;
-
-const ContentMiddleSection = styled.div`
-  padding-left: 10px;
-`;
-
-const SubmenuItemOuter = styled.div`
-  background-color: ${ ({ isExpanded }) => (isExpanded ? '#aaaaaa' : 'transparent')};
-  border-radius: ${ ({ isExpanded }) => (isExpanded ? '5px' : '0')};
-`;
-const SubmenuItemInner = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-left: 10px;
-`;
-
-const SubmenuItem = styled.div`
-  width: 300px;
-  padding: 4px 0;
-  font-weight: ${ ({ isExpanded }) => (isExpanded ? '600' : '400')};
-`;
-
-const ContentRightSection = styled.div`
-  box-sizing: border-box;
-`;
-
-const LastMenuItem = styled.div`
-  font-weight: 600;
-  font-size: 13px;
-  margin-left: 25px;
-`;
+import { 
+  CategoriesOuter,
+  CategoriesInner,
+  ContentLeftSection,
+  CloseAllCateGoriesIconWrapper,
+  SectionTitle,
+  MainMenuItemsWrapper,
+  MainMenuItem,
+  ContentMiddleSection,
+  SubmenuItemOuter,
+  SubmenuItemInner,
+  SubmenuItem,
+  LastMenuItem,
+  ContentRightSection,
+  ProductsTitle,
+} from './CategoriesList.style';
 
 const defaultValue = { taxonomyName: '', children: [] };
 
-const Index = ({ headerMenu = [], onClose = () => {} }) => {
+function CategoriesList({ headerMenu = [], onClose = () => {} }) {
 
   const [activeMenuItem, setActiveMenuItem] = useState(defaultValue);
 
@@ -199,4 +113,8 @@ const Index = ({ headerMenu = [], onClose = () => {} }) => {
   );
 }
 
-export default Index;
+CategoriesList.propTypes = {
+  headerMenu: PropTypes.array,
+  onClose: PropTypes.func
+}
+export default CategoriesList;

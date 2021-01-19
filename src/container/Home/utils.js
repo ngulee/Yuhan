@@ -27,7 +27,7 @@ export const filtersSubmenu = (submen = []) => {
   return submen.filter(item => item.children.length > 0);
 }
 
-export const childrenDivideIntoGroups = (children, groupCount = 10) => {
+export const childrenDivideIntoGroups = (children, groupCount = 8) => {
   const result = [];
 
   for(let i = 0; i < children.length; i++) {

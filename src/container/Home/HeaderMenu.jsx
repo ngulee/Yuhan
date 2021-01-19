@@ -1,42 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { IconLayoutGrid } from '@tabler/icons';
-import MenuItemDetail from './components/MenuItemDetailCard';
-import AllCategories from './components/AllCategories';
-import { 
-  getFormattedMenu,
-} from './utils';
+import MenuItemDetail from './components/MenuItemDetailCard/MenuItemDetailCard';
+import AllCategories from './components/CategoriesList/CategoriesList';
+import { getFormattedMenu } from './utils';
 import { fetchHeaderNavs, fetchTreePics, fetchFourPics } from './api';
 import { productsContext } from './context';
 
-
-const HeaderMenuWrapper = styled.div`
-  position: relative;
-  display: flex;
-  height: 60px;
-`;
-
-const HeaderMenuInnerWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height:100%;
-`;
-
-const HeaderMenuItem = styled.div`
-  box-sizing: border-box;
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding: 10px;
-  height: 100%;
-  cursor: default;
-  &:nth-child(n+2):hover > span {
-    border-bottom: 1px solid #000000;
-  }
-  &:nth-child(1) {
-    cursor: pointer;
-  }
-`;
+import {
+  HeaderMenuWrapper,
+  HeaderMenuItem,
+  HeaderMenuInnerWrapper,
+} from './HeaderMenu.style';
 
 
 const Home = () => {

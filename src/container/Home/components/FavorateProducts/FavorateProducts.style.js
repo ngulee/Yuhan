@@ -10,7 +10,7 @@ export const ProductWrapper = styled.div`
   flex-direction: column;
   align-items: flex-end;
   padding-right: 20px;
-  margin-top: 40px;
+  margin-top: 30px;
   margin-left: 20px;
   background-image: ${({ bgImg }) => `url(${bgImg})`};
   background-repeat: no-repeat;
@@ -46,6 +46,15 @@ export const PriceNumber = styled.span`
   text-align: right;
 `;
 
-export const ShopNowButton = styled(Button)`
+export const ShopNowButton = styled.div`
   position: absolute;
+  bottom: 30px;
+  width: 154px;
+  height: 57px;
+  line-height: 57px;
+  text-align: center;
+  color: #fff;
+  border-radius: 29px;
+  background-image: linear-gradient(126deg, #ff135d 0%, #c22c34 100%);
+  cursor: pointer;
 `;

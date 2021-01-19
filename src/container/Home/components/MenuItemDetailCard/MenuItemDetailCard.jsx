@@ -1,87 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { IconChevronRight } from '@tabler/icons';
 import { filtersSubmenu, childrenDivideIntoGroups } from '../../utils';
-import Products from '../Products';
+import Products from '../Products/Products';
 
-const HEADER_MENU_INDEX = 8;
+import {
+  SubmenuWrapper,
+  SubmenuLeftSection,
+  SubenItem,
+  SubmenuRightSection,
+  RightSectionHeader,
+  RightSectionContent,
+  ContentLeft,
+  LastMenuColumns,
+  LastMenuItem,
+  ContenRight,
+} from './MenuItemDetailCard.style';
 
-const SubmenuWrapper = styled.div`
-  position: absolute;
-  top:99%;
-  ${ ({ menuIndex }) => menuIndex > HEADER_MENU_INDEX ? 'right:0;' : '' }
-  display:flex;
-  min-height: 381px;
-  border-radius: 8px;
-  filter: drop-shadow(0px 4px 14.5px rgba(57,57,57,0.2));
-  background-color: #ffffff;
-`;
-
-const SubmenuLeftSection = styled.div`
-  box-sizing: border-box;
-  padding: 10px;
-  width: 300px;
-  height: ${({ height }) => height > 0 ? `${height}px` : 'auto'};
-  border-right: 3px solid #cccccc;
-`;
-
-const SubmenuRightSection = styled.div`
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: ${({ height }) => height > 0 ? `${height}px` : 'auto'};
-  min-width:200px;
-  padding: 30px;
-`;
-
-const SubenItem = styled.div`
-  padding-left:10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: 500;
-  border-radius: 5px;
-  background: ${({ isActived }) => (isActived ? '#cccccc' : 'transparent')};
-`;
-
-const RightSectionHeader = styled.div`
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  font-weight: 500;
-  border-bottom: 2px solid #aaaaaa;
-`;
-
-const RightSectionContent = styled.div`
-  display: flex;
-`;
-const ContentLeft = styled.div`
-  display: flex;
-`;
-const ContenRight = styled.div`
-  display: flex;
-`;
-
-const LastMenuColumns = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-left: ${({ index }) => (index > 0 ? '20px' : '0' )};
-`;
-const LastMenuItem = styled.span`
-  margin: 10px 0;
-  width: 200px;
-  color: #ccc;
-  &:hover {
-    cursor: pointer;
-    text-decoration: underline #ccc;
-  }
-`;
-
-
-const Index = ({
+function MenuItemDetailCard ({
   submenu = [],
   menuIndex = 0,
   onMouseLeave = () => {}
-}) => {
+}) {
 
   submenu = filtersSubmenu(submenu);
 
@@ -184,4 +124,10 @@ const Index = ({
   )
 }
 
-export default Index;
+MenuItemDetailCard.propTypes = {
+  submenu: PropTypes.array,
+  menuIndex: PropTypes.number,
+  onMouseLeave: PropTypes.func
+}
+
+export default MenuItemDetailCard;

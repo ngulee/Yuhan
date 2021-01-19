@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   ProductsWrapper,
   ProductWrapper,
@@ -24,6 +25,10 @@ function FavorateProducts({ activeMenuItem = {} }) {
 
   }, []);
 
+  const handleShopNow = (id) => {
+    console.log('productId:', id);
+  }
+
   if (products.length === 0) return null;
 
 
@@ -42,12 +47,8 @@ function FavorateProducts({ activeMenuItem = {} }) {
                 <PriceDescription>Starter Set</PriceDescription>
                 <PriceNumber>${price}</PriceNumber>
               </PriceWrapper>
-              <ShopNowButton 
-                borderRadius="200px"
-                position="absolute"
-                bottom="20px"
-                color="#ffffff"
-                colorScheme="red"
+              <ShopNowButton
+                onClick={() => handleShopNow(id)}
               >Shop Now</ShopNowButton>
             </ProductWrapper>
           )
@@ -56,5 +57,9 @@ function FavorateProducts({ activeMenuItem = {} }) {
     </ProductsWrapper>
   );
 };
+
+FavorateProducts.propTypes = {
+  activeMenuItem: PropTypes.object.isRequired
+}
 
 export default FavorateProducts;

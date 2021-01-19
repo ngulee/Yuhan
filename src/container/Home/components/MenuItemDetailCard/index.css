@@ -5,4 +5,9 @@
 
   box-sizing: border-box;
   padding-top: 100px;
+
+  line-height: 154px;
+  text-align: center;
+
+  cursor: pointer;
 }
