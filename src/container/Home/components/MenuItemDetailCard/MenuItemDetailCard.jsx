@@ -68,9 +68,10 @@ function MenuItemDetailCard ({
       <SubmenuLeftSection height={wrapperHeight}>
         {
           submenu.map((submenItem) => {
-            const { taxonomyName, children } = submenItem;
+            const { taxonomyName } = submenItem;
             return (
               <SubenItem
+                key={taxonomyName}
                 isActived={taxonomyName === activeItem.taxonomyName}
                 onMouseEnter={() => handleSubmenuItemMouseEnter(submenItem)}
               >

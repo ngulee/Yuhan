@@ -4,6 +4,7 @@ export const HEADER_MENU_INDEX = 8;
 
 export const SubmenuWrapper = styled.div`
   position: absolute;
+  left:200px;
   top:99%;
   ${({ menuIndex }) => menuIndex > HEADER_MENU_INDEX ? 'right:0;' : ''}
   display:flex;

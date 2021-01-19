@@ -14,7 +14,6 @@ export const HeaderMenuInnerWrapper = styled.div`
 
 export const HeaderMenuItem = styled.div`
   box-sizing: border-box;
-  position: relative;
   display: inline-flex;
   align-items: center;
   padding: 10px;
