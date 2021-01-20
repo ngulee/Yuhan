@@ -33,6 +33,10 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
     setActiveMenuItem(deepCloneMenuItem);
   }
 
+  const handleLastMenuItemClick = (menu) => {
+    console.log('LastMenuItemClick:', menu);
+  }
+
   if (headerMenu.length === 0) return null;
 
 
@@ -86,7 +90,7 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
                         menu.isExpanded ? (
                           menu.children.map((menu) => {
                             return (
-                              <LastMenuItem>{menu.taxonomyName}</LastMenuItem>
+                              <LastMenuItem onClick={() => handleLastMenuItemClick(menu)}>{menu.taxonomyName}</LastMenuItem>
                             )
                           })
                         ) : null

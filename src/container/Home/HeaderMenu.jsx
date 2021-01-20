@@ -30,9 +30,12 @@ const Home = () => {
     if (timer) clearTimeout(timer);
     event.stopPropagation();
     setActiveMenu(taxonomyName);
-    const threePics = await fetchTreePics(parentTaxonomyPath);
-
-    setProducts([...threePics]);
+    try {
+      const threePics = await fetchTreePics(parentTaxonomyPath);
+      setProducts([...threePics]);
+    } catch (error) {
+      setProducts([]);
+    }
   }
 
   const handleMouseLeave = () => {

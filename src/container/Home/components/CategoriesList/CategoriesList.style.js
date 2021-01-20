@@ -78,6 +78,11 @@ export const ContentMiddleSection = styled.div`
 export const SubmenuItemOuter = styled.div`
   background-color: ${({ isExpanded }) => (isExpanded ? '#aaaaaa' : 'transparent')};
   border-radius: ${({ isExpanded }) => (isExpanded ? '5px' : '0')};
+  &:hover {
+    cursor: pointer;
+    background-color: #aaaaaa;
+    border-radius: 5px;
+  }
 `;
 export const SubmenuItemInner = styled.div`
   box-sizing: border-box;
@@ -101,4 +106,8 @@ export const LastMenuItem = styled.div`
   font-weight: 600;
   font-size: 13px;
   margin-left: 25px;
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;
