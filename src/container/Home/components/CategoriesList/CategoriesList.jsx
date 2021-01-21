@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { IconChevronRight, IconPlus, IconMinus, IconX } from '@tabler/icons';
 import Products from '../Products/Products';
 import FavorateProducts from '../FavorateProducts/FavorateProducts';
+import { productsContext } from '../../context';
+import { fetchFourPics } from '../../api';
 
 import { 
   CategoriesOuter,
@@ -26,6 +28,16 @@ const defaultValue = { taxonomyName: '', children: [] };
 function CategoriesList({ headerMenu = [], onClose = () => {} }) {
 
   const [activeMenuItem, setActiveMenuItem] = useState(defaultValue);
+  const [fourProducts, setFourProducts] = useState([])
+
+  const requestFourPics = async (parentTaxonomyPath = '') => {
+    try {
+      const fourPics = await fetchFourPics(parentTaxonomyPath);
+      setFourProducts(fourPics);
+    } catch (error) {
+      
+    }
+  }
 
   const handleToggleSubmenItem = (subIndex, isExpanded) => {
     const deepCloneMenuItem = JSON.parse(JSON.stringify(activeMenuItem))
@@ -33,9 +45,20 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
     setActiveMenuItem(deepCloneMenuItem);
   }
 
+  const handleMainMenuItemMouseEnter = (menu) =>  {
+    const { parentTaxonomyPath } = menu.children[0];
+    console.log('parentTaxonomyPath:', parentTaxonomyPath);
+    requestFourPics(parentTaxonomyPath);
+    setActiveMenuItem(menu)
+  }
+
   const handleLastMenuItemClick = (menu) => {
     console.log('LastMenuItemClick:', menu);
   }
+
+  useEffect(() => {
+    requestFourPics();
+  }, []);
 
   if (headerMenu.length === 0) return null;
 
@@ -56,7 +79,7 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
                   <MainMenuItem
                     key={taxonomyName}
                     isActived={activeMenuItem.taxonomyName === taxonomyName}
-                    onMouseEnter={() => setActiveMenuItem(menu)}
+                    onMouseEnter={() => handleMainMenuItemMouseEnter(menu)}
                   >
                     <span>{taxonomyName}</span>
                     <div style={{
@@ -77,7 +100,7 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
               {
                 activeMenuItem.children.map((menu, subIndex) => {
                   return (
-                    <SubmenuItemOuter isExpanded={menu.isExpanded}>
+                    <SubmenuItemOuter key={menu.taxonomyName} isExpanded={menu.isExpanded}>
                       <SubmenuItemInner>
                         <SubmenuItem isExpanded={menu.isExpanded}>{menu.taxonomyName}</SubmenuItem>
                           {
@@ -90,7 +113,7 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
                         menu.isExpanded ? (
                           menu.children.map((menu) => {
                             return (
-                              <LastMenuItem onClick={() => handleLastMenuItemClick(menu)}>{menu.taxonomyName}</LastMenuItem>
+                              <LastMenuItem key={menu.taxonomyName} onClick={() => handleLastMenuItemClick(menu)}>{menu.taxonomyName}</LastMenuItem>
                             )
                           })
                         ) : null
@@ -109,7 +132,10 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
               <SectionTitle>Trending Now</SectionTitle> : 
               <ProductsTitle>Trending at {activeMenuItem.taxonomyName}</ProductsTitle>
           }
-          <Products />
+          <productsContext.Provider value={{ products: fourProducts, name: 'b' }}>
+            <Products />
+          </productsContext.Provider>
+          
           <FavorateProducts activeMenuItem={activeMenuItem}  />
         </ContentRightSection>
       </CategoriesInner>

@@ -2841,27 +2841,12 @@
             {
               "children": [],
               "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Baking Tools and Pans"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cookie"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
               "taxonomyName": "Cupcake"
             },
             {
               "children": [],
               "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
               "taxonomyName": "Icing, Fondant and Gumpaste"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cupcake"
             },
             {
               "children": [],
@@ -2896,37 +2881,12 @@
             {
               "children": [],
               "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Learn to Decorate"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Sprinkles and Decorations"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
               "taxonomyName": "Back to School Baking"
             },
             {
               "children": [],
               "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
               "taxonomyName": "Birthday Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Birthday Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Brunch Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Graduation Baking"
             },
             {
               "children": [],
@@ -2998,152 +2958,6 @@
           ],
           "parentTaxonomyPath": "root//Shop Categories//Baking Supplies",
           "taxonomyName": "All Things Gingerbread"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Icing, Fondant and Gumpaste"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Baking Tools and Pans"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cake Decorating"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Candy Making"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cake Stands, Display Boards and Treat Packaging"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Rosanna Pansino Bakeware by Wilton"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Dylan’s Candy Bar Bakeware by Wilton"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Baking Tools and Pans"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cookie"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cupcake"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Icing, Fondant and Gumpaste"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cupcake"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cookie"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Learn to Decorate"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Sprinkles and Decorations"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cake Decorating"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Cake Stands, Display Boards and Treat Packaging"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Candy Making"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Learn to Decorate"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Sprinkles and Decorations"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Back to School Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Birthday Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Birthday Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Brunch Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Graduation Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Brunch Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Graduation Baking"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Baking Supplies//Wilton",
-              "taxonomyName": "Halloween Baking"
-            }
-          ],
-          "parentTaxonomyPath": "root//Shop Categories//Baking Supplies",
-          "taxonomyName": "Wilton"
         },
         {
           "children": [],
@@ -4076,47 +3890,6 @@
           ],
           "parentTaxonomyPath": "root//Shop Categories//Floral",
           "taxonomyName": "Floral Stems, Bushes & Picks"
-        },
-        {
-          "children": [
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Bushes"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Mats"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Picks"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Greenery Arrangements"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Garlands"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Moss"
-            },
-            {
-              "children": [],
-              "parentTaxonomyPath": "root//Shop Categories//Floral//Greenery",
-              "taxonomyName": "Wreaths"
-            }
-          ],
-          "parentTaxonomyPath": "root//Shop Categories//Floral",
-          "taxonomyName": "Greenery"
         },
         {
           "children": [

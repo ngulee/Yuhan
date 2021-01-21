@@ -3,7 +3,7 @@ import { IconLayoutGrid } from '@tabler/icons';
 import MenuItemDetail from './components/MenuItemDetailCard/MenuItemDetailCard';
 import AllCategories from './components/CategoriesList/CategoriesList';
 import { getFormattedMenu } from './utils';
-import { fetchHeaderNavs, fetchTreePics, fetchFourPics } from './api';
+import { fetchHeaderNavs, fetchTreePics } from './api';
 import { productsContext } from './context';
 
 import {
@@ -21,7 +21,6 @@ const Home = () => {
   const [activeMenu, setActiveMenu] = useState('');
 
   const [products, setProducts] = useState([]);
-  const [fourProducts, setFourProducts] = useState([]);
 
   const [allCategoriesVisible, setAllCategoriesVisible] = useState(false);
 
@@ -49,11 +48,6 @@ const Home = () => {
   }
 
   const handleClickAllCatefories = async (isShow) => {
-    if (isShow) {
-      const fourPics = await fetchFourPics();
-      setFourProducts(fourPics);
-    }
-    
     setAllCategoriesVisible(isShow);
   }
 
@@ -114,12 +108,10 @@ const Home = () => {
       </HeaderMenuWrapper>
       {
         allCategoriesVisible ? (
-          <productsContext.Provider value={{ products: fourProducts, name: 'b' }}>
-            <AllCategories 
+           <AllCategories 
               headerMenu={headerNavs.slice(1)}
               onClose={() => handleClickAllCatefories(false)}
             />
-          </productsContext.Provider>
         ) : null
       }
     </React.Fragment>
