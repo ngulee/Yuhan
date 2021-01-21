@@ -45,6 +45,10 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
     setActiveMenuItem(deepCloneMenuItem);
   }
 
+  /**
+   * hover 一级menu的时候请求 fourPics
+   * @param {*} menu 
+   */
   const handleMainMenuItemMouseEnter = (menu) =>  {
     const { parentTaxonomyPath } = menu.children[0];
     console.log('parentTaxonomyPath:', parentTaxonomyPath);
@@ -56,8 +60,13 @@ function CategoriesList({ headerMenu = [], onClose = () => {} }) {
     console.log('LastMenuItemClick:', menu);
   }
 
+  /**
+   * 点击all categories 请求 fourPics
+   * @param {*} menu
+   */
   useEffect(() => {
-    requestFourPics();
+    const parentTaxonomyPath = 'root// shop categories'
+    requestFourPics(parentTaxonomyPath);
   }, []);
 
   if (headerMenu.length === 0) return null;
